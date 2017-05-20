@@ -1,0 +1,26 @@
+{
+  "name": "anonymous-bot",
+  "version": "1.0.0",
+  "description": "A bot to send anonymous messages",
+  "main": "index.js",
+  "repository": {
+    "url": "git@github.com:offthread/anonymous-bot.git",
+    "type": "git"
+  },
+  "author": "Danilo Freitas <dsurviver@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node_modules/babel-cli/bin/babel-node.js --presets node6 index.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-node6": "^11.0.0"
+  },
+  "dependencies": {
+    "bootable": "^0.2.4",
+    "electrolyte": "^0.3.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.10.0",
+    "telebot": "^1.1.1"
+  }
+}
