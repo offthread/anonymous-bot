@@ -1,14 +1,14 @@
 'use strict';
 
-import TeleBot from 'telebot';
 import fs from 'fs';
+import TeleBot from 'telebot';
 
 
 exports = module.exports = (settings, groupServices, userServices) => {
 
   const chatTypes = {
-    group: 'group',
-    private: 'private'
+    groups: [ 'group', 'supergroup' ],
+    privates: [ 'private' ]
   };
 
   const bot = new TeleBot(settings.telegramToken);
@@ -24,7 +24,7 @@ exports = module.exports = (settings, groupServices, userServices) => {
   });
 
   bot.on('/add', (msg, props) => {
-    if (String(msg.chat.type) !== chatTypes.group) {
+    if (!chatTypes.groups.includes(String(msg.chat.type))) {
       throw {
         message: 'You need to use this command inside a group',
         showToUser: true
@@ -53,7 +53,7 @@ exports = module.exports = (settings, groupServices, userServices) => {
   });
 
   bot.on('/send', (msg, props) => {
-    if (String(msg.chat.type) !== chatTypes.private) {
+    if (!chatTypes.privates.includes(String(msg.chat.type))) {
       throw {
         message: 'You need to user this command a private chat',
         showToUser: true
